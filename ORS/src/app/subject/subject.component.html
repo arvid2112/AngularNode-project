@@ -1,0 +1,96 @@
+<body class=" container-fluid row">
+  <div class="row ml-3 text-center" style="padding-top: 0%; background-image: url(./assets/form.jpg); background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;width:100%;
+  height: 700px;bottom: 0%;">
+
+<div class="col d-flex justify-content-center">
+  <div class="col-sm-4 pt-5">
+    <div class="card">
+    
+    <div class="card-body">
+        <div class="text-center">
+            <div *ngIf="form.data.id>0; then Update else Add"></div>
+            <ng-template #Add>
+                <h1>{{'Add Subject'|translate}}</h1>
+            </ng-template>
+            <ng-template #Update>
+                <h1>{{'Update Subject'|translate}}</h1>
+            </ng-template>
+        </div>
+
+        <div class="col-sm-12" *ngIf="form.error && form.message!=null" class="alert alert-danger"> {{form.message}}</div>
+        <div class="col-sm-12" *ngIf="!form.error && form.message != null" class="alert alert-success"> {{form.message}}</div>
+        
+      <form>        
+      
+        <div class="form-group row ">
+          <label for="courseId" class="form-check-label ">{{'Course Name'|translate}} :<span
+                  class="text-danger">*</span>
+          </label>
+          <div class="input-group">
+              <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-graduation-cap grey-text"></i> </div>
+              </div>
+              <select class="form-control" *ngIf="form.preload.courseList!=null" name="courseId"
+                  [(ngModel)]="form.data.courseId" id="courseId">
+                  <option [value]=default [disabled]="true" selected disabled>{{'Select Course Name'|translate}}
+                  </option>
+                  <option *ngFor="let opt of form.preload.courseList" [value]="opt.id">{{opt.courseName}}
+                  </option>
+              </select>
+          </div>
+          <span class="text-danger mr-auto mb-auto  "> {{form.inputerror.courseId}}</span>
+          </div>
+              
+              <div class="form-group row">
+                  <label for="subjectName" class="form-check-label">{{'Subject Name'|translate}}:<span class="text-danger">*</span></label>
+                  <div class="input-group">
+                  <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-book grey-text"></i> </div>
+                  </div>
+                  <input type="text" [(ngModel)]="form.data.subjectName" name="subjectName" class="form-control"
+                                    placeholder="{{'Enter Subject Name'|translate}}" id="subjectName">
+                  </div>
+                  <span class="text-danger mr-auto mb-auto"> {{form.inputerror.subjectName}}</span>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="subjectDescription" class="form-check-label">{{'Description'|translate}}:
+                        <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-bars grey-text"></i> </div>
+                        </div>
+                        <input type="text" [(ngModel)]="form.data.subjectDescription" name="subjectDescription"
+                            class="form-control" placeholder="{{'Enter Subject Description'|translate}}"
+                            id="subjectDescription">
+                    </div>
+                    <span class="text-danger mr-auto mb-auto"> {{form.inputerror.subjectDescription}} </span>
+                </div>
+
+                       
+                    
+                    <div class="form-inline">
+                    <div class="text-center">
+                    <div *ngIf="form.data.id>0; then update else add"></div>
+                    <ng-template #add>
+                    <button (click)="submit()" class="btn btn-success">{{'Save'|translate}}</button>&nbsp;
+                    
+                    <button (click)="reset()" class="btn btn-secondary mr-2" >{{'Reset'|translate}}</button>
+                    </ng-template>
+                    <ng-template #update>
+                    <button (click)="submit()"class="btn btn-success ">{{'Update'|translate}}</button>&nbsp;
+                    <button (click)="cancel()" class="btn btn-secondary">{{'Cancel'|translate}}</button>
+                    </ng-template>
+                    </div>
+                    </div>
+            
+            
+          </form>
+    </div>
+    </div>
+  </div>
+</div>
+  </div>
+</body>

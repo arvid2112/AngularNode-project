@@ -1,0 +1,56 @@
+<body class="row container-fluid">
+    <div class=" row ml-3 text-center " style="padding-top: 0%; background-image: url(./assets/form.jpg); background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;width:100%;
+    height: 700px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4  " style="margin-top: 7%;">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-center" >{{'Login'|translate}}</h1>
+                    <div class="col-4" *ngIf="form.error && form.message!=null" class="alert alert-danger">
+                        {{form.message}}
+                    </div>
+                    <div class="col-4" *ngIf="!form.error && form.message!=null" class=" alert alert-success">
+                        {{form.message}}
+                    </div>
+                    <form class="form-signin">
+                        <div class="form-group row">
+                            <label for="login" class="form-check-label">{{'Login ID'|translate}}<span
+                                    class="text-danger">*</span></label>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-envelope grey-text"></i> </div>
+                                </div>
+                                <input id="login" type="text" [(ngModel)]="form.data.login" name="login"
+                                    placeholder="{{'Enter Login ID'|translate}}" class="form-control">
+                            </div>
+                            <span class="text-danger mr-auto mb-auto" id="login"> {{form.inputerror.login}} </span>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password" class="form-check-label">{{'Password'|translate}}<span
+                                    class="text-danger">*</span></label>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-key grey-text"></i> </div>
+                                </div>
+                                <input id="password" type="password" [(ngModel)]="form.data.password" name="password"
+                                    placeholder="{{'Enter Password'|translate}}" class="form-control">
+                            </div>
+                            <span class="text-danger mr-auto mb-auto" id="password"> {{form.inputerror.password}}
+                            </span>
+                        </div>
+                        <button (click)="signIn()" class="btn btn-success mr-2">{{'Sign In'|translate}}</button>
+                        <button (click)="signUp()" class="btn btn-primary mr-2">{{'Sign Up'|translate}}</button>
+                        <button (click)="reset()" class="btn btn-secondary mr-2" >{{'Reset'|translate}}</button>
+                        <br>
+                        <a routerLink="/forgotpassword">{{'Forgot my password'|translate}}</a>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

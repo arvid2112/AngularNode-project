@@ -1,0 +1,83 @@
+<body class="container-fluid">
+    <div class="" style="padding-top: 0%; background-image: url(./assets/list.png); background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;width:100%;
+    height: 850px;bottom: 0%;">
+        <div class="d-flex bg-primary text-white paddin ">
+            <h1 class="text-center container-fluid ">{{'Get Marksheet'|translate}}</h1>
+        </div>
+        <br>
+
+        <form class="form-inline">
+            <div class="col-4"></div>
+            <div class="form-group  pr-3">
+                <label for="rollNo" class="form-check-label pr-3 text-white paddin">{{'Roll No'|translate}} : </label>
+                <input type="text" class="form-control" placeholder="{{'Enter RollNo'|translate}}" name="rollNo"
+                    [(ngModel)]="form.rollNo" id="rollNo">
+            </div>
+            <button class="btn-primary btn" (click)="submit()">{{'Search'|translate}}</button>&nbsp;&nbsp;
+            <button class="btn btn-secondary" (click)="reset()">{{'Reset'|translate}}</button>
+        </form>
+        <div class="" *ngIf="this.flag">
+
+            <div class="p-1">
+                <div class="table-responsive ">
+                    <table class="table table-bordered">
+                        <thead class="thread-light ">
+                            <tr class="text-white paddin">
+                                <th>{{'College Name'|translate}}: {{form.data.college.name}}</th>
+                            </tr>
+                            <tr class="text-white paddin">{{'Address'|translate}}: {{form.data.college.address}} {{form.data.college.city}}
+                                ,{{form.data.college.state}} {{'Phone No'|translate}}:- {{form.data.college.phoneNo}}</tr>
+                            <tr class="text-white paddin">{{'Student Name'|translate}}: {{form.data.student.firstName}} {{form.data.student.lastName}}</tr>
+
+                        </thead>
+                        <thead class="thread-light text-uppercase ">
+                            <tr class="text-white paddin">
+                                <td>{{'Subject'|translate}}</td>
+                                <td>{{'Maximum Marks'|translate}}</td>
+                                <td>{{'Passing Marks'|translate}}</td>
+                                <td>{{'Marks Obtained'|translate}}</td>
+                            </tr>
+                            <tr class="text-white paddin">
+                                <td>{{'Physics'|translate}}</td>
+                                <td>100</td>
+                                <td>35</td>
+                                <td>{{form.data.marksheet.physics}}</td>
+                            </tr>
+                            <tr class="text-white paddin">
+                                <td>{{'Chemistry'|translate}}</td>
+                                <td>100</td>
+                                <td>35</td>
+                                <td>{{form.data.marksheet.chemistry}}</td>
+                            </tr>
+                            <tr class="text-white paddin">
+                                <td>{{'Maths'|translate}}</td>
+                                <td>100</td>
+                                <td>35</td>
+                                <td>{{form.data.marksheet.maths}}</td>
+                            </tr>
+                            
+                            <tr class="text-white paddin">
+                                <td>{{'Total'|translate}}:</td>
+                                
+                                <td> {{
+                                    (form.data.marksheet.physics+form.data.marksheet.maths+form.data.marksheet.chemistry)
+                                    }}
+                                    /300</td>
+                                <td>{{'Percentage'|translate}}</td>
+                                <td> {{
+                                    (form.data.marksheet.physics+form.data.marksheet.maths+form.data.marksheet.chemistry)/3
+                                    | number:'1.0-2' }}
+                                </td>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
